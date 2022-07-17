@@ -1,0 +1,61 @@
+---
+import NavBar from "@components/NavigationBar/NavBar.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="About">
+    <NavBar />
+    <main>
+        <h3>Augusto Eduardo Torres</h3>
+        <p class="text-gradient">Flutter | Golang | Python | Javascript/Typescript | IndieGames</p>
+        <p>
+            Fullstack Web Developer, started with Native Android development, migrated to Flutter development app and
+            now i am focused on studing web
+            development.
+        </p>
+        <p>
+            Interested in Golang, Flutter, Python, Javascript/Typescript projects.
+        </p>
+    </main>
+</Layout>
+
+<style>
+    :root {
+        --astro-gradient: linear-gradient(180deg, #15ff00, #e784d4);
+    }
+
+    .text-gradient {
+        font-weight: 600;
+        background-image: var(--astro-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 100% 200%;
+        background-position-y: 100%;
+        border-radius: 0.4rem;
+        animation: pulse 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%,
+        100% {
+            background-position-y: 0%;
+        }
+
+        50% {
+            background-position-y: 80%;
+        }
+    }
+
+    main {
+        width: 80%;
+        margin: 0 auto;
+        max-width: 80ch;
+        padding: auto;
+    }
+
+    Layout {}
+
+    h3 {
+        text-align: left;
+    }
+</style>

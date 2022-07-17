@@ -1,0 +1,41 @@
+---
+import Footer from '../components/Footer.astro';
+import NavBar from '../components/NavigationBar/NavBar.astro';
+import PostCard from '../components/PostCard.astro';
+import Layout from '../layouts/Layout.astro';
+const cards = []
+---
+
+<Layout title="Augusto Eduardo Dev Blog.">
+	<NavBar />
+	<main>
+		<section>
+			{cards.map((p) =>
+			<PostCard title={p.title} content={p.content} href={p.href} />)}
+		</section>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		width: 80%;
+		margin: 0 auto;
+		max-width: 80ch;
+		padding: auto;
+	}
+
+	ul {
+		display: ;
+		grid-template-columns: repeat(auto-fit, minmax(10ch, 2fr));
+		gap: 0.5rem;
+		margin-right: 10%;
+	}
+
+	li {
+		list-style: none;
+		border-radius: 0.5rem;
+		margin: auto;
+		display: inline;
+	}
+</style>

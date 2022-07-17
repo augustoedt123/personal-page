@@ -1,0 +1,32 @@
+---
+export interface Props {
+    title: string,
+    content: string,
+    href: string,
+}
+const { href, title, content } = Astro.props;
+---
+
+<div class="link-card">
+    <a href={href}>
+        <h3>{title}</h3>
+        <span>{content}</span>
+    </a>
+</div>
+
+<style>
+    .link-card:hover {
+        box-shadow: 0 0 0 3px rgb(97, 97, 205), 0 0 0 5px rgb(235, 58, 182), 0 0 0 7px rgb(206, 177, 80);
+    }
+
+    .link-card>a {
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        text-decoration: none;
+        color: white;
+    }
+    span {
+        color: bisque;
+    }
+</style>
