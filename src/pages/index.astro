@@ -3,7 +3,21 @@ import Footer from '../components/Footer.astro';
 import NavBar from '../components/NavigationBar/NavBar.astro';
 import PostCard from '../components/PostCard.astro';
 import Layout from '../layouts/Layout.astro';
-const cards = []
+import { ICard } from 'src/types';
+
+const allPost = await Astro.glob("./article/*.md")
+const sortedPost = allPost
+	.filter(f => f.frontmatter.draft != true)
+	.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
+	.map(f => ({
+		title: f.frontmatter.title,
+		description: f.frontmatter.description,
+		date: f.frontmatter.date,
+		url: f.url
+	}))
+const cards : ICard[] = sortedPost
+
+
 ---
 
 <Layout title="Augusto Eduardo Dev Blog.">
@@ -11,7 +25,7 @@ const cards = []
 	<main>
 		<section>
 			{cards.map((p) =>
-			<PostCard title={p.title} content={p.content} href={p.href} />)}
+			<PostCard title={p.title} content={p.description} href={p.url} />)}
 		</section>
 	</main>
 	<Footer />
